@@ -1,79 +1,117 @@
-===================================================
-Tests for text_indentation in 0-add_integer.py
-===================================================
+============================
+doctest for 0-add_integer.py
+============================
+``add_integer()`` returns the sum of its arguments
 
->>> add_integer = __import__ ('0-add_integer').add_integer
+SUCCESSFUL TEST CONDITIONS
+==========================
 
+testing addition of two integers, both single digit
+::
+>>> add_integer = __import__('0-add_integer').add_integer
 >>> add_integer(1, 2)
 3
 
->>> add_integer(100, -2)
-98
+testing addition of two negative integers
+::
+>>> add_integer(-2, -3)
+-5
 
+testing addition of one positive, one negative integers
+::
+>>> add_integer(-1, 5)
+4
+
+testing addition of 1 integer and default value of 2nd int (98)
+::
 >>> add_integer(2)
 100
 
->>> add_integer(100.3, -2)
-98
+testing addition of two floats
+::
+>>> add_integer(5.61, 2.3)
+7
 
->>> add_integer(10, 3.7)
-13
+testing addition of 1 int, 1 float
+::
+>>> add_integer(9, 1.9247)
+10
 
->>> add_integer(69, 42)
-111
+testing addition of 1 float and default value of 2nd int (98)
+::
+>>> add_integer(27.1234)
+125
 
->> add_integer(inf)
-inf
+testing addition of large integer (2**32) and int
+::
+>>> add_integer(4294967296, 1)
+4294967297
 
->>> add_integer(float('nan'))
-Traceback (most recent call last):
-...
-ValueError: cannot convert float NaN to integer
+testing addition of two large integers (2**32)
+::
+>>> add_integer(4294967296, 4294967296)
+8589934592
 
->>> add_integer(9223372036854775807, 1)
-9223372036854775808
 
->>> add_integer('hello', 43)
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
+TEST CONDITIONS WHERE AN ERROR IS RAISED
+========================================
 
->>> add_integer(23, 'holberton')
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
-
->>> add_integer(None, 'holberton')
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
-
->>> add_integer('12a', 'Zoref')
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
-
->>> add_integer(23, None)
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
-
->>> add_integer(23, [1, 2, 3])
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
-
->>> add_integer([3, 4, 5])
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
-
->>> add_integer([])
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
-
+testing addition of single infinity and default value of 2nd int (98)
+::
 >>> add_integer(float('inf'))
 Traceback (most recent call last):
-...
 OverflowError: cannot convert float infinity to integer
+
+testing how add_integer function handles no arguments
+::
+>>> add_integer()
+Traceback (most recent call last):
+TypeError: add_integer() missing 1 required positional argument: 'a'
+
+testing how add_integer function handles None argument
+::
+>>> add_integer(None)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+testing how add_integer function handles more than 2 arguments
+::
+>>> add_integer(1, 2, 3)
+Traceback (most recent call last):
+TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
+testing how add_integer function handles 1st argument not of type int or float
+::
+>>> add_integer("9", 1)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+testing how add_integer function handles 2nd argument not of type int or float
+::
+>>> add_integer(7, "8")
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+testing how add_integer function handles both arguments not of type int or float
+::
+>>> add_integer("5", "3")
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+testing how add_integer function handles if 1 argument is boolean
+::
+>>> add_integer(True, 1)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+testing how add_integer function handles if 1 argument is list
+::
+>>> add_integer([6], 1)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+testing how add_integer function handles float NaN argument
+::
+>>> add_integer(float("NaN"), 1)
+Traceback (most recent call last):
+ValueError: cannot convert float NaN to integer
