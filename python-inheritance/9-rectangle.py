@@ -21,4 +21,6 @@ class Rectangle(BaseGeometry):
 
     def __str__(self):
         """ rectangle description"""
-        return ("[Rectangle] {}/{}".format(self.__width, self.__height))
+        string = "[" + str(self.__class__.__name__) + "]"
+        string += str(self.__width) + "/" + str(self.__heigth)
+        return string
