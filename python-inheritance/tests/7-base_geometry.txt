@@ -1,66 +1,61 @@
-==========================
-Test for Integer validator
-==========================
-
+=============================
+How to Use 7-base_geometry.py
+=============================
 
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
-
-
 >>> bg = BaseGeometry()
+>>> type(bg)
+<class '7-base_geometry.BaseGeometry'>
 
->>> bg.integer_validator("height", 10)
+In fact, any arguments supplied to an instantiation of ``BaseGeometry`` results in a TypeError.
 
->>> bg.integer_validator("height", "width")
+>>> bg = BaseGeometry(None)
 Traceback (most recent call last):
-...
-TypeError: height must be an integer
+TypeError: object() takes no parameters
 
->>> bg.integer_validator("height", 0)
-Traceback (most recent call last):
-...
-ValueError: height must be greater than 0
+``integer_validator(...)``, validates the integer value
+of a paramter. The first parameter, ``name``, is the name of the argument to
+check. The second argument, ``value``, is the argument to check.
 
->>> bg.integer_validator("height", -5)
-Traceback (most recent call last):
-...
-ValueError: height must be greater than 0
+If ``value`` is a valid integer, the function does nothing.
 
->>> bg.integer_validator("height")
-Traceback (most recent call last):
-...
-TypeError: integer_validator() missing 1 required positional argument: 'value'
+>>> bg.integer_validator("valid number", 1)
 
->>> bg.area()
-Traceback (most recent call last):
-...
-Exception: area() is not implemented
+But, if ``value`` is not an integer, a ``TypeError`` is raised.
 
->>> bg.integer_validator("height", [5])
-Traceback (most recent call last):
-...
-TypeError: height must be an integer
 
->>> bg.integer_validator("height", (1, 2))
-Traceback (most recent call last):
-...
-TypeError: height must be an integer
+>>> bg.integer_validator("invalid number", "number")
+raceback (most recent call last):
+TypeError: invalid number must be an integer
 
->>> bg.integer_validator("height", True)
-Traceback (most recent call last):
-...
-TypeError: height must be an integer
 
->>> bg.integer_validator("height", {1, 2})
+>>> bg.integer_validator("another invalid", True)
 Traceback (most recent call last):
-...
-TypeError: height must be an integer
+TypeError: another invalid must be an integer
 
->>> bg.integer_validator("height", None)
+>>> bg.integer_validator("invalid tuple", (1,))
 Traceback (most recent call last):
-...
-TypeError: height must be an integer
+TypeError: invalid tuple must be an integer
 
->>> bg.integer_validator()
+>>> bg.integer_validator("and another", [3])
 Traceback (most recent call last):
-...
-TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+TypeError: and another must be an integer
+
+>>> bg.integer_validator("more invalid testing", {3, 4})
+Traceback (most recent call last):
+TypeError: more invalid testing must be an integer
+
+>>> bg.integer_validator("absolutely every possible invalid", None)
+Traceback (most recent call last):
+TypeError: absolutely every possible invalid must be an integer
+
+And if ``value`` is an integer, but less than or equal to zero, a ValueError
+is raised.
+
+>>> bg.integer_validator("invalid int", -1)
+Traceback (most recent call last):
+ValueError: invalid int must be greater than 0
+
+>>> bg.integer_validator("invalid int", 0)
+Traceback (most recent call last):
+ValueError: invalid int must be greater than 0
