@@ -1,45 +1,63 @@
-=============================
-How to Use 7-base_geometry.py
-=============================
+Test for Integer validator
+==========================
 
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
 >>> bg = BaseGeometry()
 
+>>> bg.integer_validator("width", 20)
 
-``integer_validator(...)``, validates the integer value
-of a paramter. The first parameter, ``name``, is the name of the argument to
-check. The second argument, ``value``, is the argument to check.
-
-If ``value`` is a valid integer, the function does nothing.
-
->>> bg.integer_validator("valid number", 1)
-
-But, if ``value`` is not an integer, a ``TypeError`` is raised.
-
-
->>> bg.integer_validator("invalid tuple", (1,))
+>>> bg.integer_validator("width", "height")
 Traceback (most recent call last):
-TypeError: invalid tuple must be an integer
+...
+TypeError: width must be an integer
 
->>> bg.integer_validator("and another", [3])
+>>> bg.integer_validator("width", 5)
 Traceback (most recent call last):
-TypeError: and another must be an integer
+...
+ValueError: width must be greater than 5
 
->>> bg.integer_validator("more invalid testing", {3, 4})
+>>> bg.integer_validator("width", -10)
 Traceback (most recent call last):
-TypeError: more invalid testing must be an integer
+...
+ValueError: width must be greater than 0
 
->>> bg.integer_validator("absolutely every possible invalid", None)
+>>> bg.integer_validator("width")
 Traceback (most recent call last):
-TypeError: absolutely every possible invalid must be an integer
+...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-And if ``value`` is an integer, but less than or equal to zero, a ValueError
-is raised.
-
->>> bg.integer_validator("invalid int", -1)
+>>> bg.area()
 Traceback (most recent call last):
-ValueError: invalid int must be greater than 0
+...
+Exception: area() is not implemented
 
->>> bg.integer_validator("invalid int", 0)
+>>> bg.integer_validator("width", [8])
 Traceback (most recent call last):
-ValueError: invalid int must be greater than 0
+...
+TypeError: width must be an integer
+
+>>> bg.integer_validator("width", (3, 9))
+Traceback (most recent call last):
+...
+TypeError: width must be an integer
+
+>>> bg.integer_validator("width", True)
+Traceback (most recent call last):
+...
+TypeError: width must be an integer
+
+>>> bg.integer_validator("width", {4, 10})
+Traceback (most recent call last):
+...
+TypeError: width must be an integer
+
+>>> bg.integer_validator("width", None)
+Traceback (most recent call last):
+...
+TypeError: width must be an integer
+
+>>> bg.integer_validator()
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
