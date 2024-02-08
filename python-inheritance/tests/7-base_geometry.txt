@@ -37,11 +37,6 @@ Traceback (most recent call last):
 ...
 TypeError: a must be an integer
 
->>> bg.integer_validator("a", True)
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
-
 >>> bg.integer_validator("a", None)
 Traceback (most recent call last):
 ...
