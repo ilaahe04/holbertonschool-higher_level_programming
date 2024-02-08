@@ -76,6 +76,11 @@ value as list:
     	Traceback (most recent call last):
 	TypeError: name must be an integer
 
+value as bool:
+    	>>> bg.integer_validator("age", True)
+    	Traceback (most recent call last):
+	TypeError: age must be an integer
+
 value as set:
     	>>> bg.integer_validator("name", {3, 4})
     	Traceback (most recent call last):
