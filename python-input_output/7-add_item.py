@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""JSON"""
+
+"""
+    The ``7. Load, add, save`` module
+"""
 
 
 import json
