@@ -12,3 +12,4 @@ try:
     txt = load_from_json_file("add_item.json")
 except Exception:
     txt = []
+save_to_json_file(loads + sys.argv[1:], "add_item.json")
