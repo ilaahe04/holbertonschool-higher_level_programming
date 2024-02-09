@@ -3,7 +3,7 @@
 
 
 def class_to_json(obj):
-     """Initialize an empty dictionary"""
+    """Initialize an empty dictionary"""
     j_dict = {}
 
     for attr, value in obj.__dict__.items():
@@ -11,4 +11,3 @@ def class_to_json(obj):
             j_dict[attr] = value
 
     return j_dict
-
