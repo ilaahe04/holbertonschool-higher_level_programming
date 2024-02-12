@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""DOC"""
+
 
 class Base:
     """A class named base"""
