@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""DOC"""
+"""Class Base"""
 
 
 class Base:
