@@ -101,10 +101,10 @@ class Rectangle(Base):
                 if i == "id":
                     self.id = kwargs[i]
                 if i == "width":
-                    self.id = kwargs[i]
+                    self.width = kwargs[i]
                 if i == "height":
-                    self.id = kwargs[i]
+                    self.height = kwargs[i]
                 if i == "x":
-                    self.id = kwargs[i]
+                    self.x = kwargs[i]
                 if i == "y":
-                    self.id = kwargs[i]
+                    self.y = kwargs[i]
