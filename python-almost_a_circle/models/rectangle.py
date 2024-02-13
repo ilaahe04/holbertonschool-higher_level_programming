@@ -73,3 +73,9 @@ class Rectangle(Base):
     def __str__(self):
         return f"[Rectangle] ({self.id}) {self.x}/{self.y}\
  - {self.width}/{self.height}"
+
+    def display(self):
+        """Print the 'y' offset: vertical spacing"""
+        print("\n" * self.y, end="")
+        for row in range(self.height):
+            print(" " * self.x + "#" * self.width)
