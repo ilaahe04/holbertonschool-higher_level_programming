@@ -66,16 +66,17 @@ class Rectangle(Base):
         return self.__width * self.__height
 
     def display(self):
-        """Dislay rectangle"""
-        for row in range(self.height):
-            print("#" * self.width)
+        """Print rectangle with #"""
+        for y in range(self.__y):
+            print("")
+        for i in range(self.__height):
+            for x in range(self.__x):
+                print(" ", end="")
+            print("#" * self.__width)
 
     def __str__(self):
         return f"[Rectangle] ({self.id}) {self.x}/{self.y}\
  - {self.width}/{self.height}"
 
-    def display(self):
-        """Print the 'y' offset: vertical spacing"""
-        print("\n" * self.y, end="")
-        for row in range(self.height):
-            print(" " * self.x + "#" * self.width)
+    def update(self, *args):
+
