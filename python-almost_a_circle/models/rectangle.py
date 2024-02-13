@@ -79,6 +79,7 @@ class Rectangle(Base):
  - {self.width}/{self.height}"
 
     def update(self, *args):
+        """Update the class Rectangle"""
         arguments = ["id", "width", "height", "x", "y"]
 
         if args and len(args) != 0:
