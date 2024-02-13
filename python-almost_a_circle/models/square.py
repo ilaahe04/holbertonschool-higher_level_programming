@@ -22,3 +22,36 @@ class Square(Rectangle):
     def __str__(self):
         return "[Square] ({}) {}/{} - {}".\
                format(self.id, self.x, self.y, self.size)
+
+    def update(self, *args, **kwargs):
+        """ Function"""
+        if args:
+            try:
+                self.id = args[0]
+                self.width = args[1]
+                self.height = args[1]
+                self.x = args[2]
+                self.y = args[3]
+            except Exception:
+                pass
+        else:
+            try:
+                self.id = kwargs['id']
+            except Exception:
+                pass
+            try:
+                self.width = kwargs['size']
+            except Exception:
+                pass
+            try:
+                self.height = kwargs['size']
+            except Exception:
+                pass
+            try:
+                self.x = kwargs['x']
+            except Exception:
+                pass
+            try:
+                self.y = kwargs['y']
+            except Exception:
+                pass
