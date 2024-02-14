@@ -56,7 +56,7 @@ class Square(Rectangle):
             except Exception:
                 pass
 
-     def to_dictionary(self):
+    def to_dictionary(self):
         """Turn class atribute to dictionary"""
         dic = {"id": self.id,
                "size": self.size,
