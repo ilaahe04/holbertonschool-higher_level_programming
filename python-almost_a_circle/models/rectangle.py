@@ -108,3 +108,12 @@ class Rectangle(Base):
                     self.x = kwargs[i]
                 if i == "y":
                     self.y = kwargs[i]
+
+    def to_dictionary(self):
+        """Turn class atribute to dictionary"""
+        dic = {"id": self.id,
+               "width": self.width,
+               "height": self.height,
+               "x": self.x,
+               "y": self.y}
+        return dic
