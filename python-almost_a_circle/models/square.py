@@ -55,3 +55,11 @@ class Square(Rectangle):
                 self.y = kwargs['y']
             except Exception:
                 pass
+
+     def to_dictionary(self):
+        """Turn class atribute to dictionary"""
+        dic = {"id": self.id,
+               "size": self.size,
+               "x": self.x,
+               "y": self.y}
+        return dic
