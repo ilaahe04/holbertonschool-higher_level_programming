@@ -22,8 +22,8 @@ class TestBase(unittest.TestCase):
 
     def test_from_json_string_none(self):
         result = Base.from_json_string(None)
-        self.assertEqual(result, "[]")
+        self.assertEqual(result, [])
 
     def test_from_json_string_empty(self):
-        result = Base.from_json_string("")
-        self.assertEqual(result, "[]")
+        result = Base.from_json_string("[]")
+        self.assertEqual(result, [])
