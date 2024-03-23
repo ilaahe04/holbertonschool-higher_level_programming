@@ -7,14 +7,10 @@ import MySQLdb
 import sys
 
 if __name__ == "__main__":
-    if len(sys.argv) != 5:
-        print("Usage: ./script.py mysql_username mysql_password database_name state_name")
-        sys.exit(1)
-        db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
-        query = "SELECT * FROM cities WHERE state_name = %s ORDER BY id"
-        cur.execute(query, (sys.argv[4],))
-        cities = cur.fetchall()
-        for city in cities:
-            print(city)
-        cur.close()
-        db.close()
+    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
+    cur.execute("SELECT * \
+            FROM cities \
+            INNER JOIN states \
+            ON cities.state_id = states.id \
+            ORDER BY cities.id")
+    print(", ".join([c[2] for c in cur.fetchall() if c[4] == sys.argv[4]]))
