@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Connect to database"""
 
+
 import MySQLdb
 import sys
 
